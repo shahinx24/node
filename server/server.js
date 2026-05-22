@@ -13,6 +13,3 @@ const server = http.createServer((req, res) => {
 server.listen(3000, () => {
     console.log("Server is live on http://localhost:3000/User?name=YourName&age=00")
 })
-
-
-
