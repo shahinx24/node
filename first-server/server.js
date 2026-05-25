@@ -1,8 +1,10 @@
-const https = require('https');
+const http = require("http");
 
-const server = http.createServer((req, res)=> {
-    res.write("Node.js server is Running ");
+const server = http.createServer((req, res) => {
+    res.write("Hello Shahin! Your first Node.js server is running!");
     res.end();
 });
 
-server.listen(3000,)
+server.listen(3000, () => {
+    console.log("Server running on http://localhost:3000");
+});
