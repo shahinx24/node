@@ -1,5 +1,5 @@
 // create
-// const fs = require("fs");
+const fs = require("fs");
 
 // fs.writeFile("demo.txt", "Hello Shahin!", (err) => {
 //     if (err) throw err;
@@ -15,20 +15,19 @@
 // });
 
 // adding without delete old one
-// const fs = require("fs");
 // fs.appendFile("demo.txt", "\nWelcome to Node.js", (err) => {
 //     if (err) throw err;
 //     console.log("Data added");
 // });
 
 // Rename
-fs.rename("demo.txt", "sample.txt", (err) => {
-    if (err) throw err;
-    console.log("File renamed");
-});
+// fs.rename("demo.txt", "sample.txt", (err) => {
+//     if (err) throw err;
+//     console.log("File renamed");
+// });
 
 // Delete
-// fs.unlink("sample.txt", (err) => {
-//     if (err) throw err;
-//     console.log("File deleted");
-// });
+fs.unlink("sample.txt", (err) => {
+    if (err) throw err;
+    console.log("File deleted");
+});
