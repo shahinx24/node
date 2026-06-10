@@ -8,11 +8,11 @@ const fs = require('fs')
 //     console.log("file creted successfully")
 // })
 
-// fs.readFile('file.txt', 'utf8' ,(err,data)=>{
-//     if(err){
-//         console.log(err)
-//         return;
-//     }
-//     console.log(data)
-// })
+fs.readFile('file.txt', 'utf8' ,(err,data)=>{
+    if(err){
+        console.log(err)
+        return;
+    }
+    console.log(data)
+})
 
