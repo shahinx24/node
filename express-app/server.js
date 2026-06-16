@@ -4,14 +4,21 @@ const app = express()
 const PORT = 3000;
 
 let users = [];
+let nextId = 1;
 
 app.use(express.json())
+
+app.get('/', (req, res) => {
+    res.json({
+        message: 'User Management API is running'
+    });
+});
 
 app.post('/users', (req, res) => {
     const { name, age, email } = req.body;
 
     const newUser = {
-        id: users.length + 1,
+        id: nextId++,
         name,
         age,
         email,
@@ -20,7 +27,7 @@ app.post('/users', (req, res) => {
     users.push(newUser)
 
     res.status(201).json({
-        message: "user create succufully",
+        message: "User created successfully",
         user: newUser,
     })
 })
@@ -43,7 +50,7 @@ app.get('/users/:id', (req, res) => {
     res.json(user)
 })
 
-app.put('users/:id',(req,res)=>{
+app.put('/users/:id',(req,res)=>{
     const id = parseInt(req.params.id);
 
     const user = users.find(u => u.id === id);
@@ -56,12 +63,12 @@ app.put('users/:id',(req,res)=>{
 
     const { name,age,email} = req.body;
 
-    user.name = name || user.name;
-    user.age = age || user.age;
-    user.email = email || user.email;
+    user.name = name ?? user.name;
+    user.age = age ?? user.age;
+    user.email = email ?? user.email;
 
     res.json({
-        message: "User updated succesfull",
+        message: "User updated successfully",
         user
     })
 })
@@ -79,11 +86,11 @@ app.delete('/users/:id', (req, res) => {
     const deleteUser = users.splice(index, 1);
 
     res.json({
-        message: "User Deleted succesfull",
+        message: "User Deleted successfully",
         user: deleteUser[0]
     })
 })
 
 app.listen(PORT,()=>{
-    console.log(`server is live on ${PORT}`)
+    console.log(`server is live on http://localhost:${PORT}`)
 })
