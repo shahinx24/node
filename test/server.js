@@ -2,6 +2,13 @@ const express = require('express')
 
 const app = express()
 
+const myMiddleWare = (eq,res,next)=>{
+    console.log('MiddleWare executed');
+    next();
+}
+
+app.use(myMiddleWare);
+
 app.get('/',(req,res)=>{
         res.send("hello node")
 })
