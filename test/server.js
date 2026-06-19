@@ -16,3 +16,16 @@ app.get('/',(req,res)=>{
 app.listen(3000,()=>{
     console.log(`Server is live on http://localhost:3000`)
 })
+
+
+app.post('/users', (req, res) => {
+    const user = req.body;
+    res.json({
+        message: 'User created',
+        user
+    });
+});
+
+app.get('/users', (req, res) => {
+    res.json(users);
+});
