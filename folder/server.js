@@ -55,7 +55,46 @@ app.delete("/user", (req,res)=>{
     
 })
 
+app.put('/user/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
 
+        const updatedUser = await user.findByIdAndUpdate(
+            id,
+            req.body,
+            { new: true }
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json(updatedUser);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error.message });
+    }
+});
+
+app.delete('/user/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const deletedUser = await user.findByIdAndDelete(id);
+
+        if (!deletedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json({
+            message: "User deleted successfully",
+            deletedUser
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error.message });
+    }
+});
 
 app.listen(5000, ()=>{
     console.log("server is live http://localhost:5000")
