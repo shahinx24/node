@@ -6,7 +6,7 @@ const login = async (req, res) => {
     const token = jwt.sign(
         { email },
         "mysecretkey",
-        { expiresIn: "1h"}
+        { expiresIn: "1h" }
     );
 
     res.json({ token });
