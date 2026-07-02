@@ -7,6 +7,10 @@ const connectDB = require("./config/db");
 const logger = require("./middleware/logger")
 const userRouters = require("./routes/userRoutes")
 const authRoutes = require("./routes/authRoutes");
+require("dotenv").config();
+
+const secret = process.env.JWT_SECRET;
+console.log(secret);
 
 app.use(authRoutes);
 connectDB()
@@ -18,6 +22,8 @@ app.get("/", (req, res) => {
 
 app.use("/users", userRouters)
 
-app.listen(3000, () => {
-    console.log("server is live on http://localhost:3000")
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`server is live on http://localhost:${PORT}`)
 })
