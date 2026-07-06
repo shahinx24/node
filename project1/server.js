@@ -1,18 +1,20 @@
 const express = require("express")
 const mongoose = require("mongoose")
+const userRouters = require("./routes/userRoutes")
 
 const app = express()
 app.use(express.json())
 
-async function connectDB() {
-    try{
-        await mongoose.connect("mongodb://localhost:27017")
-    }catch (error){
-        console.log(error)
-    }
-}
+const connectDB = require("./config/db")
+
 connectDB()
 
 app.get("/",(req,res)=>{
-    res.send("welcome to my project")
+    res.send("Welcome To Ui")
+})
+
+app.use("/users", userRouters)
+
+app.listen(5000, ()=>{
+    console.log("server is live on http://localhost:5000")
 })

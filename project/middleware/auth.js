@@ -8,10 +8,8 @@ const auth = (req, res, next) => {
             message: "No Token"
         });
     }
-
     try {
         const decoded = jwt.verify(token, "secretkey");
-
         req.user = decoded;
 
         next()
