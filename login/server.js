@@ -15,5 +15,5 @@ app.get("/",(req,res)=>{
 })
 
 app.listen(3000, ()=>{
-    console.log("serve is nw live on http://localhost:3000")
+    console.log("serve is now live on http://localhost:3000")
 })
